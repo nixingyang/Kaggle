@@ -41,9 +41,9 @@ def perform_cutmix(image_content_alpha,
 
     # Copy the region from the second image
     image_content = image_content_alpha.copy()
-    image_content[height_start:height_end, width_start:
-                  width_end] = image_content_beta[height_start:height_end,
-                                                  width_start:width_end]
+    image_content[height_start:height_end,
+                  width_start:width_end] = image_content_beta[
+                      height_start:height_end, width_start:width_end]
 
     # Modify the one hot encoding vector
     one_hot_encoding_tuple = []

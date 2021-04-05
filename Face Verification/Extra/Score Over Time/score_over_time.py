@@ -47,8 +47,9 @@ for TeamName, DisplayName, color in zip(TeamName_list, DisplayName_list,
     # Only keep the best score in the same day
     best_score_index_flag = np.zeros(selected_records.shape[0], dtype=bool)
     for current_record_index in np.flipud(np.arange(selected_records.shape[0])):
-        if selected_records[current_record_index, 0] not in selected_records[
-                best_score_index_flag, 0]:
+        if selected_records[current_record_index,
+                            0] not in selected_records[best_score_index_flag,
+                                                       0]:
             best_score_index_flag[current_record_index] = True
     selected_records = selected_records[best_score_index_flag, :]
 

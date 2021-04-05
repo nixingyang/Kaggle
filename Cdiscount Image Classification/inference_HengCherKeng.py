@@ -25,6 +25,7 @@ import sys
 sys.path.append(HENGCHERKENG_FOLDER_PATH)
 from inception_v3 import Inception3  # @UnresolvedImport pylint: disable=import-error
 from excited_inception_v3 import SEInception3  # @UnresolvedImport pylint: disable=import-error
+
 MODEL_NAME_TO_MODEL_DETAILS_DICT = {
     "Inception3": (Inception3, "LB=0.69565_inc3_00075000_model.pth"),
     "SEInception3": (SEInception3, "LB=0.69673_se-inc3_00026000_model.pth")
@@ -141,8 +142,9 @@ def get_submission_from_prediction(prediction_file_path_list,
             (label_index, ensemble_func(prob_value_list)) for label_index,
             prob_value_list in label_index_to_prob_value_list_dict.items()
         ])
-        chosen_label_index = label_index_and_chosen_prob_value_array[np.argmax(
-            label_index_and_chosen_prob_value_array[:, 1]), 0].astype(np.int)
+        chosen_label_index = label_index_and_chosen_prob_value_array[
+            np.argmax(label_index_and_chosen_prob_value_array[:, 1]),
+            0].astype(np.int)
         chosen_category_id = label_index_to_category_id_dict[chosen_label_index]
 
         yield product_id, chosen_category_id

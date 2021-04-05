@@ -252,13 +252,15 @@ def do_random_block_fade(image, magnitude=0.5):
     m = image.copy()
     cv2.rectangle(m, (0, 0), (height, width), 1, 5)
     m = image < 0.5
-    if m.sum() == 0: return image
+    if m.sum() == 0:
+        return image
 
     m = np.where(m)
     y0, y1, x0, x1 = np.min(m[0]), np.max(m[0]), np.min(m[1]), np.max(m[1])
     w = x1 - x0
     h = y1 - y0
-    if w * h < 10: return image
+    if w * h < 10:
+        return image
 
     ew, eh = np.random.uniform(*size, 2)
     ew = int(ew * w)
@@ -297,7 +299,8 @@ def do_random_sprinkle(image, magnitude=0.5):
     image_small = cv2.resize(image, dsize=None, fx=0.25, fy=0.25)
     m = np.where(image_small > 0.25)
     num = len(m[0])
-    if num == 0: return image
+    if num == 0:
+        return image
 
     s = size // 2
     i = np.random.choice(num, num_sprinkle)

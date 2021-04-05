@@ -16,8 +16,8 @@ def apply_random_erasing(image_content, sl, sh, r1, mean, max_attempt_num):
             starting_height = np.random.randint(0,
                                                 image_height - erasing_height)
             starting_width = np.random.randint(0, image_width - erasing_width)
-            image_content[starting_height:starting_height +
-                          erasing_height, starting_width:starting_width +
+            image_content[starting_height:starting_height + erasing_height,
+                          starting_width:starting_width +
                           erasing_width] = np.array(mean,
                                                     dtype=np.float32) * 255
             break

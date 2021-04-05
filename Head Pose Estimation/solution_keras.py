@@ -5,8 +5,8 @@ import time
 
 # Read data set from file
 X_train = pd.read_csv("./input/X_train.csv", skiprows=0).as_matrix()[:, 1:]
-multi_Y_train = pd.read_csv("./input/y_train.csv",
-                            skiprows=0).as_matrix()[:, 1:]
+multi_Y_train = pd.read_csv("./input/y_train.csv", skiprows=0).as_matrix()[:,
+                                                                           1:]
 X_test = pd.read_csv("./input/X_test.csv", skiprows=0).as_matrix()[:, 1:]
 multi_Y_test = []
 

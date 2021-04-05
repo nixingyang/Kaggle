@@ -254,12 +254,12 @@ def process_image_content(image_content,
         intensity_threshold = np.uint8(
             np.max(image_content) * intensity_threshold_percentage)
         width_mask = np.sum(
-            image_content[edge_threshold:-edge_threshold, edge_threshold:
-                          -edge_threshold] > intensity_threshold,
+            image_content[edge_threshold:-edge_threshold,
+                          edge_threshold:-edge_threshold] > intensity_threshold,
             axis=0) > 1
         height_mask = np.sum(
-            image_content[edge_threshold:-edge_threshold, edge_threshold:
-                          -edge_threshold] > intensity_threshold,
+            image_content[edge_threshold:-edge_threshold,
+                          edge_threshold:-edge_threshold] > intensity_threshold,
             axis=1) > 1
         width_start, width_end = np.where(width_mask)[0][[0, -1]]
         width_start, width_end = max(
@@ -268,8 +268,8 @@ def process_image_content(image_content,
         height_start, height_end = max(
             0,
             height_start - edge_threshold * 2), height_end + edge_threshold * 2
-        image_content = image_content[height_start:height_end, width_start:
-                                      width_end]
+        image_content = image_content[height_start:height_end,
+                                      width_start:width_end]
 
         # Apply zero padding to make it square
         height, width = image_content.shape

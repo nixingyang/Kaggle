@@ -128,8 +128,9 @@ def reformat_localization():
         for annotation_x, annotation_width, annotation_y, annotation_height in annotation_dict.get(
                 os.path.basename(original_image_path), []):
             localization_image_content[annotation_y:annotation_y +
-                                       annotation_height, annotation_x:
-                                       annotation_x + annotation_width] = 255
+                                       annotation_height,
+                                       annotation_x:annotation_x +
+                                       annotation_width] = 255
 
         os.makedirs(os.path.abspath(
             os.path.join(localization_image_path, os.pardir)),
@@ -269,8 +270,8 @@ def reorganize_dataset():
             localization_image_path = localization_image_path_list[index_value]
 
             path_suffix = original_image_path[len(TRAIN_FOLDER_PATH):]
-            assert path_suffix == localization_image_path[len(
-                LOCALIZATION_FOLDER_PATH):]
+            assert path_suffix == localization_image_path[
+                len(LOCALIZATION_FOLDER_PATH):]
 
             if path_suffix[1:].startswith("NoF"):
                 continue
@@ -377,8 +378,8 @@ def convert_annotation_to_localization(annotation_array,
             (column_start_index + int(annotation[3] * column_size),
              column_size - 1))
 
-        localization[row_start_index:row_end_index +
-                     1, column_start_index:column_end_index + 1] = 1
+        localization[row_start_index:row_end_index + 1,
+                     column_start_index:column_end_index + 1] = 1
         localization_list.append(np.expand_dims(localization, axis=0))
 
     return np.array(localization_list).astype(np.float32)
